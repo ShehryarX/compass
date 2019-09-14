@@ -16,10 +16,16 @@
 		1723A102232D21D9007AE0CE /* EventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1723A101232D21D9007AE0CE /* EventView.xib */; };
 		1723A104232D222E007AE0CE /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723A103232D222E007AE0CE /* EventView.swift */; };
 		1723A106232D2B7C007AE0CE /* resturant.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1723A105232D2B7B007AE0CE /* resturant.jpg */; };
+		174BCFB9232D67EB004D5F3A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174BCFB8232D67EB004D5F3A /* DetailViewController.swift */; };
+		174BCFBB232D7023004D5F3A /* UICornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174BCFBA232D7023004D5F3A /* UICornerRadiusView.swift */; };
 		17CD12DB232D3A3500DCCAD0 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = 17CD12DA232D3A3500DCCAD0 /* ARCL */; };
+		17CD12DD232D597900DCCAD0 /* UISwitchTintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD12DC232D597900DCCAD0 /* UISwitchTintable.swift */; };
+		17CD12DF232D5DC400DCCAD0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17CD12DE232D5DC400DCCAD0 /* GoogleService-Info.plist */; };
+		B999E695AF9C314834A32753 /* Pods_Wander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C54C70AD1F5B0F43846334 /* Pods_Wander.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13C54C70AD1F5B0F43846334 /* Pods_Wander.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wander.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1723A0E4232CB724007AE0CE /* Wander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1723A0E7232CB724007AE0CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1723A0E9232CB724007AE0CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +37,13 @@
 		1723A101232D21D9007AE0CE /* EventView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventView.xib; sourceTree = "<group>"; };
 		1723A103232D222E007AE0CE /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		1723A105232D2B7B007AE0CE /* resturant.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = resturant.jpg; sourceTree = "<group>"; };
+		174BCFB8232D67EB004D5F3A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		174BCFBA232D7023004D5F3A /* UICornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICornerRadiusView.swift; sourceTree = "<group>"; };
+		17CD12DC232D597900DCCAD0 /* UISwitchTintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISwitchTintable.swift; sourceTree = "<group>"; };
+		17CD12DE232D5DC400DCCAD0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		17E2E6C4232D78B0006B22FF /* Wander.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wander.entitlements; sourceTree = "<group>"; };
+		3D1A19C885C7B946710FB9C1 /* Pods-Wander.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wander.debug.xcconfig"; path = "Target Support Files/Pods-Wander/Pods-Wander.debug.xcconfig"; sourceTree = "<group>"; };
+		7A41E4684D73B3201403D0A2 /* Pods-Wander.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wander.release.xcconfig"; path = "Target Support Files/Pods-Wander/Pods-Wander.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17CD12DB232D3A3500DCCAD0 /* ARCL in Frameworks */,
+				B999E695AF9C314834A32753 /* Pods_Wander.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +64,8 @@
 			children = (
 				1723A0E6232CB724007AE0CE /* Wander */,
 				1723A0E5232CB724007AE0CE /* Products */,
+				2FA14F7EB4313303274CB82B /* Pods */,
+				79E878BE1DF22DCE42C4093D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +80,7 @@
 		1723A0E6232CB724007AE0CE /* Wander */ = {
 			isa = PBXGroup;
 			children = (
+				17E2E6C4232D78B0006B22FF /* Wander.entitlements */,
 				1723A0E7232CB724007AE0CE /* AppDelegate.swift */,
 				1723A0E9232CB724007AE0CE /* SceneDelegate.swift */,
 				1723A0EB232CB724007AE0CE /* ViewController.swift */,
@@ -74,8 +91,29 @@
 				1723A0F5232CB726007AE0CE /* Info.plist */,
 				1723A101232D21D9007AE0CE /* EventView.xib */,
 				1723A103232D222E007AE0CE /* EventView.swift */,
+				17CD12DE232D5DC400DCCAD0 /* GoogleService-Info.plist */,
+				17CD12DC232D597900DCCAD0 /* UISwitchTintable.swift */,
+				174BCFB8232D67EB004D5F3A /* DetailViewController.swift */,
+				174BCFBA232D7023004D5F3A /* UICornerRadiusView.swift */,
 			);
 			path = Wander;
+			sourceTree = "<group>";
+		};
+		2FA14F7EB4313303274CB82B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D1A19C885C7B946710FB9C1 /* Pods-Wander.debug.xcconfig */,
+				7A41E4684D73B3201403D0A2 /* Pods-Wander.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		79E878BE1DF22DCE42C4093D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13C54C70AD1F5B0F43846334 /* Pods_Wander.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,9 +123,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1723A0F8232CB726007AE0CE /* Build configuration list for PBXNativeTarget "Wander" */;
 			buildPhases = (
+				377FA59403673C5AB5C5BBF4 /* [CP] Check Pods Manifest.lock */,
 				1723A0E0232CB724007AE0CE /* Sources */,
 				1723A0E1232CB724007AE0CE /* Frameworks */,
 				1723A0E2232CB724007AE0CE /* Resources */,
+				ED03A0508780D7BEA274B253 /* [CP] Embed Pods Frameworks */,
+				04AFD24C8AD18C6F74EF4786 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -147,10 +188,70 @@
 				1723A0EF232CB724007AE0CE /* Main.storyboard in Resources */,
 				1723A106232D2B7C007AE0CE /* resturant.jpg in Resources */,
 				1723A102232D21D9007AE0CE /* EventView.xib in Resources */,
+				17CD12DF232D5DC400DCCAD0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04AFD24C8AD18C6F74EF4786 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wander/Pods-Wander-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wander/Pods-Wander-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wander/Pods-Wander-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		377FA59403673C5AB5C5BBF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wander-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED03A0508780D7BEA274B253 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wander/Pods-Wander-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wander/Pods-Wander-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wander/Pods-Wander-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1723A0E0232CB724007AE0CE /* Sources */ = {
@@ -159,8 +260,11 @@
 			files = (
 				1723A0EC232CB724007AE0CE /* ViewController.swift in Sources */,
 				1723A0E8232CB724007AE0CE /* AppDelegate.swift in Sources */,
+				174BCFBB232D7023004D5F3A /* UICornerRadiusView.swift in Sources */,
 				1723A0EA232CB724007AE0CE /* SceneDelegate.swift in Sources */,
+				174BCFB9232D67EB004D5F3A /* DetailViewController.swift in Sources */,
 				1723A104232D222E007AE0CE /* EventView.swift in Sources */,
+				17CD12DD232D597900DCCAD0 /* UISwitchTintable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,8 +406,10 @@
 		};
 		1723A0F9232CB726007AE0CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D1A19C885C7B946710FB9C1 /* Pods-Wander.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Wander/Wander.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RHS42V8T2R;
 				INFOPLIST_FILE = Wander/Info.plist;
@@ -320,8 +426,10 @@
 		};
 		1723A0FA232CB726007AE0CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A41E4684D73B3201403D0A2 /* Pods-Wander.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Wander/Wander.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RHS42V8T2R;
 				INFOPLIST_FILE = Wander/Info.plist;

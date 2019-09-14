@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class EventView: UIView {
+class EventView: UICornerRadiusView {
         
     @IBOutlet var contentView: UIView!
     
@@ -25,6 +25,8 @@ class EventView: UIView {
     }
     
     func basicInit() {
+        self.layer.cornerRadius = 4.0
+        self.layer.masksToBounds = true
 //        contentView = Bundle.main.loadNibNamed("EventView", owner: self, options: nil)![0] as! UIView
         Bundle.main.loadNibNamed("EventView", owner: self, options: nil)
         contentView.fixInView(self)
