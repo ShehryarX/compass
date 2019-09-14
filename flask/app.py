@@ -1,19 +1,33 @@
 from flask import Flask
 import json
 import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
+base_url = "https://graph.facebook.com/"
+token = 'EAAFdFfQwBlwBAKrX9v287MrjT41XQ7sFxxBuZAVCuGlPImpBvKZCYVa6GBWgLtInbF5QRYCWp6AfRSeUy9nAjFZAvCnpRSSqwf0xfN6iCZAf35IJ8rQ7GDgYwBLeLdsdXjaFE4hNzzN5siaiao81Q6v6kkIHZCTr8S7EY2uCeS2ZBaUQ2biAMrF2gXJbvcWyXp92EWqp4G3vI6wn3bbNEP'
 
-@app.route("/<int:user_id>")
-def func(user_id):
-    base_url = "https://graph.facebook.com/"
-    token = 'EAAchvkxiC3gBAPvKlOX2vvSafBM9HlnufNcd501XPxliJ3TTX3YjSDfgEv8JjiHPH4yfVNoXgvDCX0lufiGJSdjsINoFnZBHkk4wq4vkT2dSCbPpo4zRRydkdFZCy3LHTyrAweXOovH3ET06MfseGDuFsZANhZBlV9Fxe11pGN9XjJ1fpl0SZAVFhNSMKCC9J4huZCCaJo7QZDZD'
-    fieldsUrl = "fields=id,name,likes,friends,groups,location,hometown,gender,age_range,address,businesses,events"
+@app.route("/user/<int:user_id>")
+def user(user_id):
+    fieldsUrl = "fields=id,name,likes,friends,groups,location,hometown,gender,age_range,address,events"
     url = base_url + str(user_id) + "?" + fieldsUrl + "&access_token=" + token
-    print(url)
     return requests.get(url).content
 
+@app.route("/scrape/<string:query>")
+def scrape(query):
+    url = 'https://www.facebook.com/search/top/?query='+query+'&epa=SEARCH_BOX'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text,"html.parser")
+    print(soup)
+    return "Hi"
+
+@app.route("/event/<int:event_id>")
+def event(event_id):
+    fieldsUrl = "?fields=id,name,category,decsription,parent_group,roles"
+    url = base_url + str(event_id) + fieldsUrl + "&access_token=" + token
+    print(url)
+    return requests.get(url).content
 
 if __name__ == "__main__":
     app.run()
