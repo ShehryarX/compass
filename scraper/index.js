@@ -10,6 +10,32 @@ const skipSymbol = (string, symbol) =>
 const wrapSymbol = (string, symbol) =>
   string.substring(0, string.indexOf(symbol));
 
+const requestEventData = id => {
+  new Promise((resolve, reject) => {
+    request(
+      {
+        url: `https://www.facebook.com/events/${id}/`,
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4"
+        }
+      },
+      (error, _response, jsx) => {
+        console.log("calling", error);
+        if (!error) {
+          const dom = cheerio.load(jsx);
+          const html = dom.html();
+          resolve({});
+        } else {
+          reject();
+        }
+      }
+    );
+  });
+};
+
+requestEventData("2484082798489280");
+
 const requestPageData = id =>
   new Promise((resolve, reject) => {
     request(
@@ -20,7 +46,7 @@ const requestPageData = id =>
             "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4"
         }
       },
-      (error, response, jsx) => {
+      (error, _response, jsx) => {
         if (!error) {
           const dom = cheerio.load(jsx);
           const html = dom.html();
