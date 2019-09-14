@@ -4,7 +4,9 @@ var express = require("express");
 var passport = require("passport");
 var Strategy = require("passport-facebook").Strategy;
 
-const { fbAuthKey } = require("./keys");
+const {
+    fbAuthKey
+} = require("./config/keys");
 
 // Configure the Facebook strategy for use by Passport.
 //
@@ -58,7 +60,9 @@ app.set("view engine", "ejs");
 // logging, parsing, and session handling.
 app.use(require("morgan")("combined"));
 app.use(require("cookie-parser")());
-app.use(require("body-parser").urlencoded({ extended: true }));
+app.use(require("body-parser").urlencoded({
+    extended: true
+}));
 app.use(
     require("express-session")({
         secret: "keyboard cat",
@@ -74,18 +78,24 @@ app.use(passport.session());
 
 // Define routes.
 app.get("/", function(req, res) {
-    res.render("home", { user: req.user });
+    res.render("home", {
+        user: req.user
+    });
 });
 
 app.get("/login", function(req, res) {
     res.render("login");
 });
 
-app.get("/login/facebook", passport.authenticate('facebook', { scope: ['user_location', 'user_likes', 'user_events', 'user_photos', 'user_videos', 'user_friends', 'user_tagged_places', 'user_posts', 'user_gender', 'user_link', 'user_age_range', 'email', 'read_insights', 'read_audience_network_insights', 'openid', 'pages_show_list', 'ads_read', 'instagram_basic', 'public_profile'] }));
+app.get("/login/facebook", passport.authenticate('facebook', {
+    scope: ['user_location', 'user_likes', 'user_events', 'user_photos', 'user_videos', 'user_friends', 'user_tagged_places', 'user_posts', 'user_gender', 'user_link', 'user_age_range', 'email', 'read_insights', 'read_audience_network_insights', 'openid', 'pages_show_list', 'ads_read', 'instagram_basic', 'public_profile']
+}));
 
 app.get(
     "/return",
-    passport.authenticate("facebook", { failureRedirect: "/login" }),
+    passport.authenticate("facebook", {
+        failureRedirect: "/login"
+    }),
     function(req, res) {
         res.redirect("/");
     }
@@ -95,7 +105,9 @@ app.get("/profile", require("connect-ensure-login").ensureLoggedIn(), function(
     req,
     res
 ) {
-    res.render("profile", { user: req.user });
+    res.render("profile", {
+        user: req.user
+    });
 });
 
 app.listen(8080, () => console.log("Listening to port 8080"));
