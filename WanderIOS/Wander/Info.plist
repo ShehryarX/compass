@@ -60,5 +60,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Required to show the world around you</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Required to locate you in the AR world</string>
 </dict>
 </plist>

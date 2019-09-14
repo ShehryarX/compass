@@ -8,75 +8,75 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventView" customModule="Wander" customModuleProvider="target">
             <connections>
-                <outlet property="body1" destination="TwI-HS-YWu" id="igl-7R-OXM"/>
-                <outlet property="body2" destination="AUz-ll-7Wj" id="beY-U6-RjG"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="XaV-EB-Ey5"/>
-                <outlet property="imageView" destination="Y77-4W-bYt" id="CJJ-4N-3hE"/>
-                <outlet property="subtitle" destination="pkq-Cp-zBc" id="lGa-WO-ZKp"/>
-                <outlet property="topTitle" destination="dqL-ZI-Dz5" id="2mU-Ns-Uwf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="270"/>
+            <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chen's Resturant" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqL-ZI-Dz5">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="36"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="43 going" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkq-Cp-zBc">
-                    <rect key="frame" x="0.0" y="44" width="300" height="24"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resturant.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Y77-4W-bYt">
-                    <rect key="frame" x="0.0" y="72" width="300" height="128"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="g0b-ua-72G">
+                    <rect key="frame" x="4" y="0.0" width="30" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="128" id="ewR-Gk-Ub2"/>
+                        <constraint firstAttribute="width" constant="30" id="tDh-rl-2OL"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 friends, including Adi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwI-HS-YWu">
-                    <rect key="frame" x="0.0" y="208" width="300" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="89% match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUz-ll-7Wj">
-                    <rect key="frame" x="0.0" y="233" width="300" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Pjc-Nm-FBW">
+                    <rect key="frame" x="38" y="14" width="138" height="22"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Engineering 7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oep-Wc-82Z">
+                            <rect key="frame" x="0.0" y="0.0" width="138" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advitya Gay + 22 friends going" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZJ-w4-dvJ">
+                            <rect key="frame" x="0.0" y="12" width="138" height="10"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                            <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bis-eg-N5W">
+                    <rect key="frame" x="176" y="9" width="24" height="32"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="person.3.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eZb-LC-WBf">
+                            <rect key="frame" x="0.0" y="1.5" width="24" height="17.5"/>
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="43" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnV-8O-9lR">
+                            <rect key="frame" x="0.0" y="20" width="24" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="yDL-eC-wbD"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="dqL-ZI-Dz5" secondAttribute="trailing" id="0Js-Ab-0va"/>
-                <constraint firstAttribute="trailing" secondItem="TwI-HS-YWu" secondAttribute="trailing" id="4j9-Ps-G1m"/>
-                <constraint firstAttribute="trailing" secondItem="AUz-ll-7Wj" secondAttribute="trailing" id="9Tl-Ib-nVA"/>
-                <constraint firstItem="pkq-Cp-zBc" firstAttribute="top" secondItem="dqL-ZI-Dz5" secondAttribute="bottom" constant="8" id="EA0-lz-KYJ"/>
-                <constraint firstItem="TwI-HS-YWu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GhP-4J-JCj"/>
-                <constraint firstItem="AUz-ll-7Wj" firstAttribute="top" secondItem="TwI-HS-YWu" secondAttribute="bottom" constant="4" id="K0e-i5-ECw"/>
-                <constraint firstItem="dqL-ZI-Dz5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Mfg-Qr-P9C"/>
-                <constraint firstItem="Y77-4W-bYt" firstAttribute="top" secondItem="pkq-Cp-zBc" secondAttribute="bottom" constant="4" id="Nlj-Hm-0Ie"/>
-                <constraint firstItem="TwI-HS-YWu" firstAttribute="top" secondItem="Y77-4W-bYt" secondAttribute="bottom" constant="8" id="RxS-Hq-gTA"/>
-                <constraint firstItem="AUz-ll-7Wj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Vdz-6B-X2O"/>
-                <constraint firstAttribute="trailing" secondItem="pkq-Cp-zBc" secondAttribute="trailing" id="Yyy-TK-DQq"/>
-                <constraint firstItem="Y77-4W-bYt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aX8-Uv-5Oh"/>
-                <constraint firstAttribute="trailing" secondItem="Y77-4W-bYt" secondAttribute="trailing" id="cWk-J2-v7v"/>
-                <constraint firstItem="dqL-ZI-Dz5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="h0k-sn-KJp"/>
-                <constraint firstItem="pkq-Cp-zBc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="v0D-tL-QeG"/>
+                <constraint firstAttribute="bottom" secondItem="g0b-ua-72G" secondAttribute="bottom" id="44Y-NU-cca"/>
+                <constraint firstItem="g0b-ua-72G" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="St4-sl-k6p"/>
+                <constraint firstItem="Pjc-Nm-FBW" firstAttribute="leading" secondItem="g0b-ua-72G" secondAttribute="trailing" constant="4" id="bQI-4P-c0L"/>
+                <constraint firstItem="g0b-ua-72G" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="cR8-AE-3rI"/>
+                <constraint firstAttribute="trailing" secondItem="bis-eg-N5W" secondAttribute="trailing" id="d0J-gV-f7C"/>
+                <constraint firstItem="Pjc-Nm-FBW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hOq-l3-R2E"/>
+                <constraint firstAttribute="trailing" secondItem="Pjc-Nm-FBW" secondAttribute="trailing" constant="24" id="t2l-qR-NSs"/>
+                <constraint firstItem="bis-eg-N5W" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ub9-34-0Bt"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="132" y="117"/>
+            <point key="canvasLocation" x="134.78260869565219" y="88.392857142857139"/>
         </view>
     </objects>
     <resources>
-        <image name="resturant.jpg" width="460.79998779296875" height="298.32000732421875"/>
+        <image name="person.3.fill" catalog="system" width="72" height="35"/>
+        <image name="pin" width="196" height="212"/>
     </resources>
 </document>

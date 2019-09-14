@@ -13,11 +13,6 @@ import UIKit
 class EventView: UIView {
         
     @IBOutlet var contentView: UIView!
-    @IBOutlet var topTitle: UILabel!
-    @IBOutlet var subtitle: UILabel!
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var body1: UILabel!
-    @IBOutlet var body2: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
