@@ -102,7 +102,7 @@ exports.wandAR = functions.https.onRequest((request, response) => {
         access_token,
         lat,
         lon
-    } = req.query;
+    } = request.query;
 
     const events_response = getEvents(user_id, access_token, lat, lon)
 
