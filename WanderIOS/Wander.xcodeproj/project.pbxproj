@@ -21,6 +21,8 @@
 		17CD12DB232D3A3500DCCAD0 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = 17CD12DA232D3A3500DCCAD0 /* ARCL */; };
 		17CD12DD232D597900DCCAD0 /* UISwitchTintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD12DC232D597900DCCAD0 /* UISwitchTintable.swift */; };
 		17CD12DF232D5DC400DCCAD0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17CD12DE232D5DC400DCCAD0 /* GoogleService-Info.plist */; };
+		17E2E6C6232D8DA0006B22FF /* e7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17E2E6C5232D8DA0006B22FF /* e7.jpg */; };
+		17E2E6C8232D903A006B22FF /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E2E6C7232D903A006B22FF /* DataManager.swift */; };
 		B999E695AF9C314834A32753 /* Pods_Wander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C54C70AD1F5B0F43846334 /* Pods_Wander.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,8 @@
 		17CD12DC232D597900DCCAD0 /* UISwitchTintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISwitchTintable.swift; sourceTree = "<group>"; };
 		17CD12DE232D5DC400DCCAD0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		17E2E6C4232D78B0006B22FF /* Wander.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wander.entitlements; sourceTree = "<group>"; };
+		17E2E6C5232D8DA0006B22FF /* e7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = e7.jpg; sourceTree = "<group>"; };
+		17E2E6C7232D903A006B22FF /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		3D1A19C885C7B946710FB9C1 /* Pods-Wander.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wander.debug.xcconfig"; path = "Target Support Files/Pods-Wander/Pods-Wander.debug.xcconfig"; sourceTree = "<group>"; };
 		7A41E4684D73B3201403D0A2 /* Pods-Wander.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wander.release.xcconfig"; path = "Target Support Files/Pods-Wander/Pods-Wander.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +87,7 @@
 				17E2E6C4232D78B0006B22FF /* Wander.entitlements */,
 				1723A0E7232CB724007AE0CE /* AppDelegate.swift */,
 				1723A0E9232CB724007AE0CE /* SceneDelegate.swift */,
+				17E2E6C5232D8DA0006B22FF /* e7.jpg */,
 				1723A0EB232CB724007AE0CE /* ViewController.swift */,
 				1723A0ED232CB724007AE0CE /* Main.storyboard */,
 				1723A0F0232CB726007AE0CE /* Assets.xcassets */,
@@ -95,6 +100,7 @@
 				17CD12DC232D597900DCCAD0 /* UISwitchTintable.swift */,
 				174BCFB8232D67EB004D5F3A /* DetailViewController.swift */,
 				174BCFBA232D7023004D5F3A /* UICornerRadiusView.swift */,
+				17E2E6C7232D903A006B22FF /* DataManager.swift */,
 			);
 			path = Wander;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 				1723A0EF232CB724007AE0CE /* Main.storyboard in Resources */,
 				1723A106232D2B7C007AE0CE /* resturant.jpg in Resources */,
 				1723A102232D21D9007AE0CE /* EventView.xib in Resources */,
+				17E2E6C6232D8DA0006B22FF /* e7.jpg in Resources */,
 				17CD12DF232D5DC400DCCAD0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1723A0EC232CB724007AE0CE /* ViewController.swift in Sources */,
+				17E2E6C8232D903A006B22FF /* DataManager.swift in Sources */,
 				1723A0E8232CB724007AE0CE /* AppDelegate.swift in Sources */,
 				174BCFBB232D7023004D5F3A /* UICornerRadiusView.swift in Sources */,
 				1723A0EA232CB724007AE0CE /* SceneDelegate.swift in Sources */,

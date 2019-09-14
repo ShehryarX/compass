@@ -17,7 +17,7 @@ class ViewController: UIViewController, FUIAuthDelegate {
     
     @IBOutlet var subView: UIView!
     let sceneView = SceneLocationView()
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
             if(user == nil) {
@@ -46,8 +46,29 @@ class ViewController: UIViewController, FUIAuthDelegate {
 
     }
     
+    
+    private var hasAuth: AccessToken? = nil
     func hasAuth(_ u: User) {
-        print(AccessToken.current?.tokenString)
+        guard let token = AccessToken.current else {
+            return
+        }
+
+        hasAuth = token
+    }
+    
+    private var handle: Timer? = nil
+    func beginWatch() {
+        if handle == nil {
+            handle = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: {_ in
+                
+                guard let token = self.hasAuth else {return}
+                guard let loc = self.sceneView.sceneLocationManager.bestLocationEstimate else {return}
+                
+                DataManager.shared.doGet(token, loc.location)
+                
+            })
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -71,7 +92,7 @@ class ViewController: UIViewController, FUIAuthDelegate {
 //        annotation.scaleRelativeToDistance = true
         sceneView.addLocationNodeWithConfirmedLocation(locationNode: annotation)
         
-        
+        beginWatch()
     }
 
     @IBAction func resetNorth(_ sender: Any) {
