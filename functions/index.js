@@ -6,7 +6,7 @@ const moment = require("moment");
 
 const {
     fbAuthKey
-} = require("./config/keys");
+} = require("./keys");
 const gl = require('geolocation-utils');
 
 var app = express();
@@ -74,7 +74,7 @@ const friendEvents = (personId, isUser, geo) => new Promise(resolve => {
     })
 })
 
-function getEvents(user_id, access_token, lat, lon) {
+async function getEvents(user_id, access_token, lat, lon) {
 
     graph.setAccessToken(access_token);
 
@@ -92,13 +92,11 @@ function getEvents(user_id, access_token, lat, lon) {
             }
             resolve();
         })
-
     });
-
     return res.status(200).json(event_dict);
-});
+};
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
+exports.wandAR = functions.https.onRequest((request, response) => {
     const {
         user_id,
         access_token,
