@@ -28,6 +28,7 @@ const date = moment(Date.now()).format('YYYY-MM-DD')
 const c_date = Date.parse(date)
 
 function verifyEvent(e, geo) {
+    return true
     const radius = 10000
     const start_time = e.start_time.split('T')[0]
     const e_date = Date.parse(start_time)
