@@ -1,6 +1,7 @@
 const express = require("express");
 const graph = require("fbgraph");
 const moment = require("moment");
+const findAPI = require("./find");
 
 const {
     fbAuthKey
@@ -25,7 +26,13 @@ var errorHandler = require("errorhandler");
 const date = moment(Date.now()).format('YYYY-MM-DD')
 const c_date = Date.parse(date)
 
+app.get("/place", function(req, res) {
+    const {
+        text
+    } = req.query;
 
+    res.send(findAPI.textToLocation(text))
+})
 
 app.get("/user_events", function(req, res) {
     const {
@@ -59,10 +66,19 @@ function verifyEvent(e, geo) {
     const e_date = Date.parse(start_time)
     const fiveDays = 1000 * 60 * 60 * 24 * 5;
     if ((e_date - c_date) > fiveDays || e_date < c_date) return false
-    if (e.place === undefined || e.place.location === undefined) return false
-    var event_loc = {
-        lat: e.place.location.latitude,
-        lon: e.place.location.longitude
+
+    if (e.place.location === undefined) {
+        const {
+            lat,
+            lng
+        } = findAPI.getLongLat(e.place.name)
+    } else {
+        const lat = e.place.location.latitude
+        const lng = e.place.location.longitude
+    }
+    const event_loc = {
+        lat: lat,
+        lon: lng
     }
     return gl.insideCircle(event_loc, geo, radius)
 }
