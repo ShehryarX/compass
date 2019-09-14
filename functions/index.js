@@ -46,6 +46,8 @@ let event_dict = {}
 
 const friendEvents = (personId, isUser, geo) => new Promise(resolve => {
     graph.get(`${personId}?fields=id,events`, function(err, res) {
+        console.log(err)
+        console.log(res)
         for (let i = 0; i < res.events.data.length; i++) {
             const event = res.events.data[i]
             console.log(event)
@@ -75,7 +77,7 @@ const friendEvents = (personId, isUser, geo) => new Promise(resolve => {
     })
 })
 
-async function getEvents(user_id, access_token, lat, lon) {
+async function getEvents(user_id, access_token, lat, lon, res) {
 
     graph.setAccessToken(access_token);
 
@@ -97,7 +99,7 @@ async function getEvents(user_id, access_token, lat, lon) {
     return res.status(200).json(event_dict);
 };
 
-exports.wandAR = functions.https.onRequest((request, response) => {
+exports.wandAR = functions.https.onRequest(async (request, response) => {
     const {
         user_id,
         access_token,
@@ -105,7 +107,11 @@ exports.wandAR = functions.https.onRequest((request, response) => {
         lon
     } = request.query;
 
-    const events_response = getEvents(user_id, access_token, lat, lon)
-
-    response.send(events_response);
+    try {
+        const events_response = await getEvents(user_id, access_token, lat, lon, response)
+        return response.send(events_response);
+    } catch(e) {
+        console.log(e);
+    }
+    response.status(500)
 });
