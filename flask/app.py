@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 app = Flask(__name__)
 
 base_url = "https://graph.facebook.com/"
-token = 'EAAFdFfQwBlwBAKrX9v287MrjT41XQ7sFxxBuZAVCuGlPImpBvKZCYVa6GBWgLtInbF5QRYCWp6AfRSeUy9nAjFZAvCnpRSSqwf0xfN6iCZAf35IJ8rQ7GDgYwBLeLdsdXjaFE4hNzzN5siaiao81Q6v6kkIHZCTr8S7EY2uCeS2ZBaUQ2biAMrF2gXJbvcWyXp92EWqp4G3vI6wn3bbNEP'
+token = 'EAAFdFfQwBlwBAItz3fkvfRsCoL4yIARQeaijZCHU0SdNbSXOx3SmuwDBNxtqtWFqBJEeetx3GYmzosm6vZAQfvniiSHdXa4ukjUiIqyctFb8DT3WrZBECILu0dmfKMdCZCIENUKb5hBktI6LzZCfXUtf2rjFnJxciAZAOh69TCS4TH67KNdzFKWu8RYHidP2APgYyNbE0DoZCxwB5Xad6Om'
 
 @app.route("/user/<int:user_id>")
 def user(user_id):
@@ -14,20 +14,20 @@ def user(user_id):
     url = base_url + str(user_id) + "?" + fieldsUrl + "&access_token=" + token
     return requests.get(url).content
 
-@app.route("/scrape/<string:query>")
-def scrape(query):
-    url = 'https://www.facebook.com/search/top/?query='+query+'&epa=SEARCH_BOX'
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text,"html.parser")
-    print(soup)
-    return "Hi"
 
-@app.route("/event/<int:event_id>")
-def event(event_id):
-    fieldsUrl = "?fields=id,name,category,decsription,parent_group,roles"
-    url = base_url + str(event_id) + fieldsUrl + "&access_token=" + token
-    print(url)
+
+@app.route("/likes/<int:user_id>")
+def likes(user_id):
+    fieldsUrl = "/likes?fields=name,category,events,about"
+    url = base_url + str(user_id) + fieldsUrl + "&access_token=" + token
     return requests.get(url).content
+
+@app.route("/events/<int:user_id>")
+def events(user_id):
+    fieldsUrl = "/events?fields=name,category,place,attending_count,about"
+    url = base_url + str(user_id) + fieldsUrl + "&access_token=" + token
+    return requests.get(url).content
+
 
 if __name__ == "__main__":
     app.run()
