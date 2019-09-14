@@ -19,8 +19,12 @@
   "homepage": "https://github.com/ShehryarX/wandAR#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "error-handler": "^1.0.0",
+    "errorhandler": "^1.5.1",
     "express": "^4.17.1",
     "fbgraph": "^1.4.4",
-    "http": "0.0.0"
+    "http": "0.0.0",
+    "method-override": "^3.0.0",
+    "pug": "^2.0.4"
   }
 }
