@@ -5,7 +5,7 @@ import requests
 app = Flask(__name__)
 
 base_url = "https://graph.facebook.com/"
-token = 'EAAFdFfQwBlwBADY9zDLeei8RLG3ZAqPktQhwWDjkVoOOtt0XYKTPZCjfgEXAZC4WJvAXdnJ5tIqUi2aStjBIuS83mYzZBAQ8bWGYTSsnfBQxNEeiEC6NPhk0NXhWey0tbPZAFF8BVJTNk91NdfyrC6R1gRQZBZAikcwq5Ukob3TKsGdV0A18ss4S8lRWIr1p63pSsIlbYghlg2wJfwQvcle'
+token = 'EAAFdFfQwBlwBAKrX9v287MrjT41XQ7sFxxBuZAVCuGlPImpBvKZCYVa6GBWgLtInbF5QRYCWp6AfRSeUy9nAjFZAvCnpRSSqwf0xfN6iCZAf35IJ8rQ7GDgYwBLeLdsdXjaFE4hNzzN5siaiao81Q6v6kkIHZCTr8S7EY2uCeS2ZBaUQ2biAMrF2gXJbvcWyXp92EWqp4G3vI6wn3bbNEP'
 
 @app.route("/user/<int:user_id>")
 def user(user_id):
