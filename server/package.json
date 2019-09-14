@@ -1,30 +1,41 @@
 {
-  "name": "wandar",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "start": "nodemon server",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ShehryarX/wandAR.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ShehryarX/wandAR/issues"
-  },
-  "homepage": "https://github.com/ShehryarX/wandAR#readme",
-  "dependencies": {
-    "axios": "^0.19.0",
-    "error-handler": "^1.0.0",
-    "errorhandler": "^1.5.1",
-    "express": "^4.17.1",
-    "fbgraph": "^1.4.4",
-    "http": "0.0.0",
-    "method-override": "^3.0.0",
-    "pug": "^2.0.4"
-  }
+    "name": "express-4.x-facebook-example",
+    "version": "0.0.0",
+    "description": "Express 4.x app using Passport for authentication with Facebook.",
+    "keywords": [
+        "example",
+        "express",
+        "passport"
+    ],
+    "author": "Jared Hanson",
+    "license": "Unlicense",
+    "homepage": "https://github.com/passport/express-4.x-facebook-example",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/passport/express-4.x-facebook-example.git"
+    },
+    "bugs": {
+        "url": "https://github.com/passport/express-4.x-facebook-example/issues"
+    },
+    "dependencies": {
+        "axios": "^0.19.0",
+        "body-parser": "^1.13.2",
+        "connect-ensure-login": "^0.1.1",
+        "cookie-parser": "^1.3.5",
+        "dotenv": "^6.2.0",
+        "ejs": "^2.3.3",
+        "error-handler": "^1.0.0",
+        "errorhandler": "^1.5.1",
+        "express": "^4.17.1",
+        "express-session": "^1.11.3",
+        "fbgraph": "^1.4.4",
+        "geolocation": "^0.2.0",
+        "geolocation-utils": "^1.2.2",
+        "http": "0.0.0",
+        "method-override": "^3.0.0",
+        "morgan": "^1.6.1",
+        "passport": "^0.4.0",
+        "passport-facebook": "^2.0.0",
+        "pug": "^2.0.4"
+    }
 }

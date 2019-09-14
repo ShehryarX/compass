@@ -1,6 +1,7 @@
 from flask import Flask
 import json
 import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
@@ -13,6 +14,13 @@ def user(user_id):
     url = base_url + str(user_id) + "?" + fieldsUrl + "&access_token=" + token
     return requests.get(url).content
 
+@app.route("/scrape/<string:query>")
+def scrape(query):
+    url = 'https://www.facebook.com/search/top/?query='+query+'&epa=SEARCH_BOX'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text,"html.parser")
+    print(soup)
+    return "Hi"
 
 @app.route("/event/<int:event_id>")
 def event(event_id):
