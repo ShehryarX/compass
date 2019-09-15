@@ -57,10 +57,10 @@ def create_tensors(df, category_sums):
 # In[74]:
 
 
-def cluster_friends(user_id,categories,category_sums):
-    friends_df = pd.read_csv('./all_friends.csv')
+def cluster_friends(all_friends_df,categories,category_sums):
+    friends_df = pd.DataFrame.from_dict(all_friends_df)
     friends_df = friends_df.fillna(value='$$')
-    friend_ids = friends_df.user_id.unique()
+    friend_ids = friends_df['user_id'].unique()
     data_input = np.zeros((len(friend_ids), 54))
     index_user_id_map = []
     for i,friend_id in enumerate(friend_ids):
@@ -173,9 +173,9 @@ def get_events(my_id, event_type,index_user_id_map, all_df, kmeans, data_input):
 # In[77]:
 
 
-def get_categories(user_id):
+def get_categories(user_id, user_df):
     
-    main_df = pd.read_csv('./data.csv')
+    main_df = user_df
     
     main_df = main_df.fillna(value='$$')
 
@@ -192,32 +192,16 @@ def get_categories(user_id):
 # In[80]:
 
 
-def main_function(user_id):
+def main_function(user_id, cat_type, all_friends_df, user_df):
     # Label categories
-    categories,category_sums = get_categories(user_id)
+    categories,category_sums = get_categories(user_id,user_df)
     
     # Cluster friends
-    kmeans,data_input,index_user_id_map = cluster_friends(user_id,categories,category_sums)
+    kmeans,data_input,index_user_id_map = cluster_friends(all_friends_df,categories,category_sums)
     
     # Get closest friends and get events
-    all_df = pd.read_csv('./all_friends.csv')
-    return get_events(user_id, 'Shop', index_user_id_map, all_df , kmeans , data_input)
-
-
-# In[81]:
-
-
-main_function('911762459191977')
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
+    all_df = all_friends_df
+    return get_events(user_id, cat_type, index_user_id_map, all_df , kmeans , data_input)
 
 
 

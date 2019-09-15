@@ -1,21 +1,21 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import json
 import requests
-import pandas as pd
+import user_match_algo as uma
+import pandas as pd 
 import numpy as np
-from sklearn.cluster import KMeans
 
 app = Flask(__name__)
 
 base_url = "https://graph.facebook.com/"
-token = 'EAAFdFfQwBlwBAAz8arxpACZBossex17WMBdZCFPf3cIExfgbR4nxRZA2DuJAYhp1O6UaIXNSBKvduCIAy4O6szGLWgbmBeJAhVUVoQooMoh9486NP0xAmRbyTaHWG7EaKKgIlWWCj4ZBZCJokTL1ZBC2FDxHGTL5KxNSJkPS4A5aYuwG23az6pHwtTyC1ZCC6d9WBfdwtAprFzhy4qyAaS2'
+token = 'EAAFdFfQwBlwBAELPOlSlNyaiOe3ZCLyAqZBAqucjpJQhM7YsladtW2tMZC5L4VXWy8jHRZBEX8LZCsT9Efrhm1Sxjx7KF3pI2qnZBF3LZBToWuSzmb1QmsSlAeZBu44TTkxVwZAhunOrIHd2cZCElyDAArtfq27cfcNAuj0HYkv6JyZAcWhlj3JnclayQ9ZAowHbmE9P8GHrvrfriI6a6GxPoyhF'
 
 def get_likes(user_id):
     fieldsUrl = "/likes?fields=id,name,category,price_range&limit=100"
     url = base_url + str(user_id) + fieldsUrl + "&access_token=" + token
-    likes = requests.get(url).json()['data']
+    res = requests.get(url).json()
+    likes = res['data']
     for like in likes:
-        print(like)
         like['user_id']  = user_id 
     return likes
 
@@ -29,17 +29,17 @@ def user(user_id):
 def likes(user_id):
     return get_likes(user_id)
 
-@app.route("/friends/<int:user_id>")
 def friends(user_id):
     fieldsUrl = "?fields=friends&limit=100"
     url = base_url + str(user_id) + fieldsUrl + "&access_token=" + token
     res = requests.get(url).json()
+    print(res)
     data = res['friends']['data']
     friend_array = []
     for friend in data:
         friend_likes = get_likes(int(friend['id']))
         friend_array.append(friend_likes)
-    return jsonify(friend_array)
+    return friend_array
 
 @app.route("/events/<int:user_id>")
 def events(user_id):
@@ -47,6 +47,33 @@ def events(user_id):
     url = base_url + str(user_id) + fieldsUrl + "&access_token=" + token
     return requests.get(url).content
 
+@app.route("/recommendation")
+def recommend():
+    cat_type = request.args.get('type')
+    user_id = request.args.get('user_id')
+    all_friends_df = pd.DataFrame()
+    for friend_pages in friends(user_id):
+        for page in friend_pages:
+            print(page)
+            row = {
+                'user_id' : page['user_id'],
+                'category': page['category'],
+                'name': page['name'],
+                'id': page['id'],
+                'price_range': page['price_range'] if ('price_range' in page) else np.nan
+            }
+            all_friends_df.append(row)
+    user_df = pd.DataFrame()
+    for page in get_likes(user_id):
+        row = {
+            'category': page['category'],
+            'name': page['name'],
+            'id': page['id'],
+            'price_range': page['price_range']
+        }
+        user_df.append(row)
+    events_list = uma.main_function(user_id, cat_type, all_friends_df, user_df)
+    return events_list
 
 if __name__ == "__main__":
     app.run()
