@@ -176,11 +176,13 @@ async function generateLocation(info) {
 }
 
 async function fixDict(event_dict) {
+    let res = []
     for (var key in event_dict) {
         if (event_dict.hasOwnProperty(key)) {
             const data = event_dict[key]
             const info = data.details
             const event_piece = {
+                id: key,
                 name: info.name,
                 description: info.description,
                 attending_count: info.attending_count,
@@ -193,10 +195,10 @@ async function fixDict(event_dict) {
                 venue_name: info.place.name,
                 location: await generateLocation(info)
             }
-            new_dict[key] = event_piece
+            res.push(event_piece)
         }
     }
-    return new_dict
+    return res
 }
 
 var port = process.env.PORT || 3000;
