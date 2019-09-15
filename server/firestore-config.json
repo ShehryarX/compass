@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "elite-campus-207914",
+  "private_key_id": "df1c0edbac85ffc0605bfa68307be7b50d1c57a3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDJAktqeCNTRM5a\naRMD8u3VWi6MjZMrQGrs3hDhG9Y025QltpUaqIg6NrO+MX76XBSD4+eL0FecwfDA\naEiBpd+I8QuOI/hDe/lf7/m4TOIG7rA3ec0kyce+RlFcRPJpTAlvzQl2tQ2lF2kw\nNQejJg7w3oHeecCvMbr600QCWw7TZHY/RVDwuD0oS8ca3SCOo/P/8yTZ64IF6KGS\ni4iCCaiZLs/MxeNhWbVgaMaa1f9AKTXtFKKQ4urTVrVPyXa9GRgFl8rXzCHy2Znp\nNRfxFmMI6um+LprHKgvelk851WGEGehp2EVc6m1DEHHkbYyLtveH2s/ushSY614f\nldwPK6/LAgMBAAECggEAJt/BOxGJ72guqlCI42ofcfQTbY5RyHsYUr/trsNl7WoL\n4DFL69BtLCj5IQ7MelnFg+5XEPSVhRUC3Qst/pjYPtEzRWWSdWasB1BPUMPZsLKH\ntOri8Drv3M4XnQsegJu6dXtHWcRRI7z/1FllJTnOiOnXXvHYAGnTOgAStovqtZnv\n9FcNIEVFN/pUUoS76uJDlrzZmDR1WF9MR3xBzGe4ST1WOPBBmsBsXB6cXl+Wl/0J\n+RDkdPTS1f95Bc8DROGGoIrJidbHLE5+RX6THN9mDjlVlpNEkODpvmecXh02unVv\nyAgc7Dmnzeiv91RDXAWEWHEX33f+kt8CVfyyS738fQKBgQDqaiClS6aVQvt6OCze\n9OzqQ2eYwCdP/9bSzPRtQAAFfd5GPs+r7Ecu6aTz51EJM/bliM9ZcslT3FDZT8P9\nGbwKdz8lqa+SBCbL442tYsBG2FWygWtCe3b17QH0SPvBtZ8GPZnb6rUSTE/+Ml/s\n0JqR6/roXKJMxbqSI1iDHF61fwKBgQDbhLHBI5ybwwbLKqxUOxLMWsmwnhpUM8PF\nABfX0D3VyM2atQugLIKnAx8mEac3uFJO+cd7UBBxtphTNAVAW9DrN888gugY/Aaa\n1yvaQyYhkfCLg/bL6pkRdAqjuEtAYKExvl5duXSVraKSS5LoL4PDVrUrVW4IqdLH\n58dDlxsjtQKBgQCkqpp2IvdJAL2Q9Gco05qdUW4zkj/LZaetewX0vLGHKgz7AWJ2\nncq/PKeAIiz9rwAv63PknMqqWyh8DxlY8TvziiLUvSc1Bi+OqDG865Kv8YX5mAoV\nsI83YB8wUBhx0bh89MbhAjXiPbMvmIlj3IHIIaGmmnP0RC20PJoPt90b1wKBgBYV\nXlCAxaOB1jAgJd//ZV+7jmi/LwTjhEFQRhXG9EGKhuyWZAoEEEy+6qZIxlq7p0Qc\nqq3EGzNlXCOaqyCTXAwdvDJpNPI2gG+ZT+cQNEjSRrGyX+SZwDZaRyu7QY7DadP4\nQ8QIASuBoUY4ZhoHlajUEzu9x2kFtJe5wHkTPX61AoGAJhnQTG9LwSrvDPALfrtU\n5f4EzOCzYDY3p8MX01BYCzed2ggwK5/TgNkCQANiMu/T77FVLrfTV8/DBmOUOZmM\nHCKWWnKybc4eIejiI8N7Yk4IrtoLS7HKGagmoL7CZ7dHjC2LZJ0nB+Jc63bZpSOW\nkXmqfdlmiKvCbBCFnPHSYeM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "wandar@elite-campus-207914.iam.gserviceaccount.com",
+  "client_id": "100595379747243256631",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/wandar%40elite-campus-207914.iam.gserviceaccount.com"
+}
