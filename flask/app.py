@@ -7,10 +7,14 @@ import numpy as np
 
 app = Flask(__name__)
 
-base_url = "https://graph.facebook.com/"
-token = 'EAAFdFfQwBlwBAPGVy20fL7bKgan3x1agZB57u4rsFZAwHzFZCSJ7FC1R6BOfjA086IGAArwjKZANe3ZARsAGGoCv7FThlHEnUNAuMYRhmxXNb50foqp8hSC788RFUlowU8ZBcyMvhTmW7diNkpCZCp9mTkRL2PUcDzPR8BuFAscLt7UYZBZBEyj1MxWMoxS1in14ygFMlUNCTrEoZCiAbDZB7Qh'
+respCache = {}
 
-def get_likes(user_id):
+base_url = "https://graph.facebook.com/"
+placeURL = 'https://maps.googleapis.com/maps/api/place/details/json'
+API_KEY = 'AIzaSyB11HAsUjP68SILT9CT2paxX7br_Hlbk1g'
+findURL = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
+
+def get_likes(user_id,token):
     fieldsUrl = "/likes?fields=id,name,category,price_range&limit=100"
     url = base_url + str(user_id) + fieldsUrl + "&access_token=" + token
     res = requests.get(url).json()
@@ -25,18 +29,18 @@ def user(user_id):
     url = base_url + str(user_id) + "?" + fieldsUrl + "&access_token=" + token
     return requests.get(url).content
 
-@app.route("/likes/<int:user_id>")
-def likes(user_id):
-    return get_likes(user_id)
+# @app.route("/likes/<int:user_id>")
+# def likes(user_id):
+#     return get_likes(user_id)
 
-def friends(user_id):
+def friends(user_id,token):
     fieldsUrl = "?fields=friends&limit=100"
     url = base_url + str(user_id) + fieldsUrl + "&access_token=" + token
     res = requests.get(url).json()
     data = res['friends']['data']
     friend_array = []
     for friend in data:
-        friend_likes = get_likes(int(friend['id']))
+        friend_likes = get_likes(int(friend['id']),token)
         friend_array.append(friend_likes)
     return friend_array
 
@@ -50,8 +54,13 @@ def events(user_id):
 def recommend():
     cat_type = request.args.get('type')
     user_id = request.args.get('user_id')
+    token = request.args.get('token')
+
+    if(user_id in respCache):
+        return respCache[user_id]
+
     all_friends_df = pd.DataFrame()
-    for friend_pages in friends(user_id):
+    for friend_pages in friends(user_id,token):
         for page in friend_pages:
             row = {
                 'user_id' : page['user_id'],
@@ -62,7 +71,7 @@ def recommend():
             }
             all_friends_df = all_friends_df.append(row, ignore_index=True)
     user_df = pd.DataFrame()
-    for page in get_likes(user_id):
+    for page in get_likes(user_id,token):
         row = {
             'category': page['category'],
             'name': page['name'],
@@ -70,8 +79,35 @@ def recommend():
             'price_range': page['price_range'] if ('price_range' in page) else np.nan
         }
         user_df = user_df.append(row, ignore_index=True)
-    events_list = uma.main_function(user_id, cat_type, all_friends_df, user_df)
-    return jsonify(events_list)
+    events_list,top_friends = uma.main_function(user_id, cat_type, all_friends_df, user_df)
+
+    recommendations_obj = []
+    for place in events_list:
+        res = requests.get(findURL, params = {
+            'key': API_KEY,
+            'input': place + " waterloo",
+            'inputtype': "textquery"
+        }).json()
+        print(res)
+        if 'candidates' not in res: continue
+        if len(res['candidates']) == 0 : continue
+        place_id = res['candidates'][0]['place_id']
+        print(place_id)
+        res2 = requests.get(placeURL, params = {
+            'key': API_KEY,
+            'place_id': place_id
+        }).json()
+        street = res2['result']['formatted_address']
+        location = res2['result']['geometry']['location']
+        recommendations_obj.append({
+            'location': location,
+            'place': place,
+            'street': street,
+            'friends': top_friends
+        })
+
+    respCache[user_id] = jsonify(recommendations_obj)
+    return respCache[user_id]
 
 if __name__ == "__main__":
     app.run()
