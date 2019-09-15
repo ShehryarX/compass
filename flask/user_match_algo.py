@@ -164,7 +164,7 @@ def get_events(my_id, event_type,index_user_id_map, all_df, kmeans, data_input):
         the_df = user_df[user_df['category'].str.contains(event_type)]
         events += (list(the_df['name']))
         
-    return events, [str(x['user_id']) for x in percentageSort]
+    return events, [str(int(x['user_id'])) for i, x in enumerate (percentageSort) if i < 3]
 
 
 # In[77]:
