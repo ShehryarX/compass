@@ -5,7 +5,7 @@ import requests
 app = Flask(__name__)
 
 base_url = "https://graph.facebook.com/"
-token = 'EAAFdFfQwBlwBAItz3fkvfRsCoL4yIARQeaijZCHU0SdNbSXOx3SmuwDBNxtqtWFqBJEeetx3GYmzosm6vZAQfvniiSHdXa4ukjUiIqyctFb8DT3WrZBECILu0dmfKMdCZCIENUKb5hBktI6LzZCfXUtf2rjFnJxciAZAOh69TCS4TH67KNdzFKWu8RYHidP2APgYyNbE0DoZCxwB5Xad6Om'
+token = 'EAAFdFfQwBlwBALEJDj8Afa9BJEZCI3NWuW6hcdMvUNZABUzSrW6uajnPtkMOCEawowWN3voJp12ZCCKTaTZBNioAeuvfg3R25jShPKjii5K5oyKCnb2XCuxptckNUMj7n0i4GCJAvEeC9HtHWaRXNesPrqY9TLblAneJfG3pLvewaoX64dGIdzuR8WCZAprwd8bVeV3obRgoH6WJwI3Oy'
 
 @app.route("/user/<int:user_id>")
 def user(user_id):
@@ -13,11 +13,9 @@ def user(user_id):
     url = base_url + str(user_id) + "?" + fieldsUrl + "&access_token=" + token
     return requests.get(url).content
 
-
-
 @app.route("/likes/<int:user_id>")
 def likes(user_id):
-    fieldsUrl = "/likes?fields=name,category,events,about"
+    fieldsUrl = "/likes?fields=id,name,category,price_range&limit=100"
     url = base_url + str(user_id) + fieldsUrl + "&access_token=" + token
     return requests.get(url).content
 
