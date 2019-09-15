@@ -14,6 +14,11 @@ class EventView: UICornerRadiusView {
         
     @IBOutlet var contentView: UIView!
     
+    @IBOutlet var title: UILabel!
+    @IBOutlet var subtitle: UILabel!
+    
+    @IBOutlet var goingCount: UILabel!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         basicInit()
@@ -30,6 +35,17 @@ class EventView: UICornerRadiusView {
 //        contentView = Bundle.main.loadNibNamed("EventView", owner: self, options: nil)![0] as! UIView
         Bundle.main.loadNibNamed("EventView", owner: self, options: nil)
         contentView.fixInView(self)
+    }
+    
+    func consume(_ e : FBEvent) {
+        title.text = e.name
+        goingCount.text = String(e.attending_count)
+        
+        if(e.total_friends_going > 0) {
+            DataManager.shared.makeMutualFriendsString(e.mutual_friends, subtitle)
+        } else {
+            subtitle.text = "No mutual friends"
+        }
     }
     
 }

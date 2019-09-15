@@ -2,7 +2,7 @@
 //  UICornerRadiusView.swift
 //  Wander
 //
-//  Created by Nigga on 2019-09-14.
+//  Created by Shahbaz on 2019-09-14.
 //  Copyright © 2019 Shahbaz Momi. All rights reserved.
 //
 

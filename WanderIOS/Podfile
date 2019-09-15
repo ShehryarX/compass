@@ -6,6 +6,7 @@ target 'Wander' do
   use_frameworks!
   pod 'Firebase/Auth'
   pod 'FirebaseUI'
+  pod 'Firebase/Database'
   # Pods for Wander
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
