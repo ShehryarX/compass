@@ -48,6 +48,17 @@ class EventView: UICornerRadiusView {
         }
     }
     
+    func consume(_ e : FBPlace) {
+        title.text = e.place
+        goingCount.text = String(e.friends.count)
+        
+        if(e.friends.count > 0) {
+            DataManager.shared.makeMutualFriendsString(e.friends, subtitle)
+        } else {
+            subtitle.text = "No mutual friends"
+        }
+    }
+    
 }
 
 extension UIView

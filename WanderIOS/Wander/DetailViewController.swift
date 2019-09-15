@@ -57,6 +57,12 @@ class DetailViewController: UIViewController {
         }
     }
     
+    @IBAction func openLink(_ sender: Any) {
+        let url = URL(string: "https://facebook.com/events/" + (event?.id ?? ""))
+    
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+    }
+    
     @IBAction func dismiss(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

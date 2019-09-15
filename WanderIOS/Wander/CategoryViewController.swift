@@ -11,12 +11,12 @@ import UIKit
 
 class Categories {
     
-    static let COMMUNITY = Category(name: "Community", img: "pin")
-    static let EVENTS = Category(name: "Events", img: "pin")
-    static let RESTAURANTS = Category(name: "Restaurants", img: "pin")
-    static let SHOPS = Category(name: "Shops", img: "pin")
+    static let COMMUNITY = Category(name: "Community", img: "community")
+    static let EVENT = Category(name: "Event", img: "event")
+    static let RESTAURANT = Category(name: "Restaurant", img: "restaurant")
+    static let SHOP = Category(name: "Shop", img: "shops")
 
-    static let ALL: [Category] = [Categories.COMMUNITY, Categories.EVENTS, Categories.RESTAURANTS, Categories.SHOPS]
+    static let ALL: [Category] = [Categories.COMMUNITY, Categories.EVENT, Categories.RESTAURANT, Categories.SHOP]
 }
 
 struct Category {
@@ -42,7 +42,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableCell
 
-        cell.consume(Categories.ALL[indexPath.row])
+        cell.consume(Categories.ALL[indexPath.row], indexPath.row == Categories.ALL.firstIndex(where: { $0.name == DataManager.shared.selectedCategory})!)
         
         return cell
 
@@ -51,8 +51,12 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // TODO: category set
         // use it
+        DataManager.shared.selectedCategory = Categories.ALL[indexPath.row].name
+        
+    DataManager.shared.onSelectedCategory(Categories.ALL[indexPath.row].name)
+        
+        dismiss(animated: true, completion: nil)
     }
     
  
@@ -66,9 +70,11 @@ class CategoryTableCell: UITableViewCell {
     
     @IBOutlet var icon: UIImageView!
     @IBOutlet var name: UILabel!
+    @IBOutlet var checkmark: UIImageView!
     
-    func consume(_ c : Category) {
+    func consume(_ c : Category, _ isSelected: Bool) {
         name.text = c.name
-        
+        checkmark.isHidden = !isSelected
+        icon.image = UIImage(named: c.img)
     }
 }

@@ -19,7 +19,7 @@ class ViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet var subView: UIView!
     let sceneView = SceneLocationView()
     @IBOutlet var buttonsBlurView: UIVisualEffectView!
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
             if(user == nil) {
@@ -79,6 +79,28 @@ class ViewController: UIViewController, FUIAuthDelegate {
         sceneView.addLocationNodeWithConfirmedLocation(locationNode: annotation)
     }
     
+    private func makeLocationNode(_ e: FBPlace) {
+        // lat: 43.472806, lon: -80.539641
+        let coord = CLLocationCoordinate2D(latitude: e.location.lat, longitude: e.location.lng)
+        let loc = CLLocation(coordinate: coord, altitude: altitude)
+        
+        let v = EventView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+
+        v.consume(e)
+        
+        let annotation = LocationAnnotationNode(location: loc, view: v)
+
+        //        test this
+        //        annotation.scaleRelativeToDistance = true
+
+        // add a name for later identification
+//        annotation.annotationNode.name = e.id
+        
+        sceneView.addLocationNodeWithConfirmedLocation(locationNode: annotation)
+    }
+    
+
+    
     private func setRealtimeData(_ objs: [FBEvent]) {
         sceneView.removeAllNodes()
         
@@ -87,26 +109,46 @@ class ViewController: UIViewController, FUIAuthDelegate {
             makeLocationNode(o)
             altitude += 60.0
         }
+    }
+    
+    private func setRecommendations(_ objs: [FBPlace]) {
+        sceneView.removeAllNodes()
         
-        
+        altitude = 300.0
+        for o in objs {
+            makeLocationNode(o)
+            altitude += 60.0
+        }
     }
     
     private var handle: Timer? = nil
-    func beginWatch() {
-        if handle == nil {
-            handle = Timer.scheduledTimer(withTimeInterval: 12.0, repeats: true, block: {_ in
-                
-                guard let token = self.hasAuth else {return}
-                guard let loc = self.sceneView.sceneLocationManager.bestLocationEstimate else {return}
-                
+    func beginWatch(_ isRecommendedMode : Bool) {
+        handle?.invalidate()
+        
+        handle = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: {_ in
+            
+            guard let token = self.hasAuth else {return}
+            guard let loc = self.sceneView.sceneLocationManager.bestLocationEstimate else {return}
+            
+            self.handle?.invalidate()
+            
+            print(isRecommendedMode)
+            if(!isRecommendedMode) {
                 DataManager.shared.doGet(token, loc.location) { objs in
                     guard let o = objs else {return}
                     self.setRealtimeData(o)
                 }
-                
-            })
-            handle?.fire()
-        }
+            } else {
+                // TODO: recommended mode
+                DataManager.shared.doRecommendationsGet(token) { objs in
+                    guard let o = objs else {return}
+                    self.setRecommendations(o)
+                }
+            }
+            
+        })
+        
+        handle?.fire()
         
     }
     
@@ -123,13 +165,18 @@ class ViewController: UIViewController, FUIAuthDelegate {
         
         sceneView.showAxesNode = true
         
-        beginWatch()
+        beginWatch(false) // false by default
         
+        DataManager.shared.onSelectedCategory = { s in
+            self.beginWatch(true)
+        }
         DataManager.shared.prefetch()
     }
 
     @IBAction func resetNorth(_ sender: Any) {
         // need to get current heading to set as north
+        guard let heading = sceneView.sceneLocationManager.locationManager.heading else {return}
+        sceneView.sceneNode?.eulerAngles.y = Float(heading)
     }
     
     @IBAction func signOut(_ sender: Any) {
@@ -151,7 +198,9 @@ class ViewController: UIViewController, FUIAuthDelegate {
     }
     
     func handleDatasetChanged(_ useRecommended : Bool) {
+        buttonsBlurView.isHidden = !useRecommended
         
+        beginWatch(useRecommended)
     }
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
@@ -163,9 +212,15 @@ class ViewController: UIViewController, FUIAuthDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let results = sceneView.hitTest(touches.first!.location(in: sceneView), options: nil)
         guard let result = results.first else {return}
+        if(result.node.name == nil) {
+            return
+        }
         let event = DataManager.shared.realtimeEvents.first(where: { e in
             e.id == result.node.name
         })
+        if event == nil {
+            return
+        }
         performSegue(withIdentifier: "showPopup", sender: event)
         
     }

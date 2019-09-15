@@ -16,13 +16,17 @@ class DataManager {
     public static let shared = DataManager()
     
     private static let endpoint = "https://us-central1-wandar-85910.cloudfunctions.net/wandAR"
+    private static let endpointRecommendations = "https://wandar-py.serveo.net/recommendation"
     
     private var ref: DatabaseReference?
     
+    var selectedCategory = Categories.RESTAURANT.name
+    var onSelectedCategory: (String) -> Void = {_ in }
     
     private init() {}
     
     var realtimeEvents = [FBEvent]()
+    var recommendatedEvents = [FBPlace]()
     var names = [String : String]()
         
     func prefetch() {
@@ -130,6 +134,53 @@ class DataManager {
             }
         }).resume()
     }
+    
+    func doRecommendationsGet(_ token: AccessToken,  _ completion: (([FBPlace]?) -> Void)? = nil) {
+         var url = URLComponents(string: DataManager.endpointRecommendations)
+            url?.queryItems = [
+                URLQueryItem(name: "user_id", value: token.userID),
+                URLQueryItem(name: "token", value: token.tokenString),
+                URLQueryItem(name: "type", value: selectedCategory)
+            ]
+        
+            let req = URLRequest(url: url!.url!)
+            
+            print(url!.url!.description)
+            
+            URLSession.shared.dataTask(with: req, completionHandler: {d, response, err in
+                guard let data = d,                            // is there data
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode == 200
+                else {
+                    return
+                }
+                    
+                do {
+                    let objs = try JSONDecoder().decode([FBPlace].self, from: data)
+                    self.recommendatedEvents = objs
+                    DispatchQueue.main.async {
+                        completion?(objs)
+                    }
+                } catch {
+                    print(error)
+                }
+            }).resume()
+    }
+}
+
+struct FBPlaceLoc: Codable {
+    let lat: Double
+    let lng: Double
+}
+
+struct FBPlace: Codable {
+    
+    let place: String
+    let location: FBPlaceLoc
+    
+    let street: String
+    
+    let friends: [String]
 }
 
 
