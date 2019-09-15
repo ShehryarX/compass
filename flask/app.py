@@ -1,6 +1,9 @@
 from flask import Flask, jsonify
 import json
 import requests
+import pandas as pd
+import numpy as np
+from sklearn.cluster import KMeans
 
 app = Flask(__name__)
 
