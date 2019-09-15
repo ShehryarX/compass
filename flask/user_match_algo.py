@@ -21,9 +21,6 @@ def process_df(df, categories,category_sums, rename_cols = True):
     
     df = df.fillna(value='$$')
     
-    if (rename_cols):
-        df = df.rename(columns={"data/id": "id", "data/name": "name","data/category":"category","data/price_range":"price_range"})
-    
     for i, row in df.iterrows():
         val = row['price_range']
         if val.find('$') < 0:
@@ -61,7 +58,7 @@ def cluster_friends(all_friends_df,categories,category_sums):
     friends_df = pd.DataFrame.from_dict(all_friends_df)
     friends_df = friends_df.fillna(value='$$')
     friend_ids = friends_df['user_id'].unique()
-    data_input = np.zeros((len(friend_ids), 54))
+    data_input = np.zeros((len(friend_ids), 60))
     index_user_id_map = []
     for i,friend_id in enumerate(friend_ids):
         temp_df = friends_df.loc[friends_df['user_id'] == friend_id]
@@ -179,9 +176,8 @@ def get_categories(user_id, user_df):
     
     main_df = main_df.fillna(value='$$')
 
-    main_df = main_df.rename(columns={"data/id": "id", "data/name": "name","data/category":"category","data/price_range":"price_range"})
 
-    categories = main_df.category.unique()
+    categories = main_df['category'].unique()
     category_sums = {}
     for category in categories:
             category_sums[category] = len(main_df.loc[main_df['category'] == category])
@@ -199,6 +195,7 @@ def main_function(user_id, cat_type, all_friends_df, user_df):
     # Cluster friends
     kmeans,data_input,index_user_id_map = cluster_friends(all_friends_df,categories,category_sums)
     
+    print(kmeans,data_input,index_user_id_map,category_sums)
     # Get closest friends and get events
     all_df = all_friends_df
     return get_events(user_id, cat_type, index_user_id_map, all_df , kmeans , data_input)

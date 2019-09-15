@@ -8,7 +8,7 @@ import numpy as np
 app = Flask(__name__)
 
 base_url = "https://graph.facebook.com/"
-token = 'EAAFdFfQwBlwBAELPOlSlNyaiOe3ZCLyAqZBAqucjpJQhM7YsladtW2tMZC5L4VXWy8jHRZBEX8LZCsT9Efrhm1Sxjx7KF3pI2qnZBF3LZBToWuSzmb1QmsSlAeZBu44TTkxVwZAhunOrIHd2cZCElyDAArtfq27cfcNAuj0HYkv6JyZAcWhlj3JnclayQ9ZAowHbmE9P8GHrvrfriI6a6GxPoyhF'
+token = 'EAAFdFfQwBlwBAPGVy20fL7bKgan3x1agZB57u4rsFZAwHzFZCSJ7FC1R6BOfjA086IGAArwjKZANe3ZARsAGGoCv7FThlHEnUNAuMYRhmxXNb50foqp8hSC788RFUlowU8ZBcyMvhTmW7diNkpCZCp9mTkRL2PUcDzPR8BuFAscLt7UYZBZBEyj1MxWMoxS1in14ygFMlUNCTrEoZCiAbDZB7Qh'
 
 def get_likes(user_id):
     fieldsUrl = "/likes?fields=id,name,category,price_range&limit=100"
@@ -33,7 +33,6 @@ def friends(user_id):
     fieldsUrl = "?fields=friends&limit=100"
     url = base_url + str(user_id) + fieldsUrl + "&access_token=" + token
     res = requests.get(url).json()
-    print(res)
     data = res['friends']['data']
     friend_array = []
     for friend in data:
@@ -54,7 +53,6 @@ def recommend():
     all_friends_df = pd.DataFrame()
     for friend_pages in friends(user_id):
         for page in friend_pages:
-            print(page)
             row = {
                 'user_id' : page['user_id'],
                 'category': page['category'],
@@ -62,18 +60,18 @@ def recommend():
                 'id': page['id'],
                 'price_range': page['price_range'] if ('price_range' in page) else np.nan
             }
-            all_friends_df.append(row)
+            all_friends_df = all_friends_df.append(row, ignore_index=True)
     user_df = pd.DataFrame()
     for page in get_likes(user_id):
         row = {
             'category': page['category'],
             'name': page['name'],
             'id': page['id'],
-            'price_range': page['price_range']
+            'price_range': page['price_range'] if ('price_range' in page) else np.nan
         }
-        user_df.append(row)
+        user_df = user_df.append(row, ignore_index=True)
     events_list = uma.main_function(user_id, cat_type, all_friends_df, user_df)
-    return events_list
+    return jsonify(events_list)
 
 if __name__ == "__main__":
     app.run()
