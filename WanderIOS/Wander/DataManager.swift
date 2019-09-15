@@ -51,7 +51,8 @@ class DataManager {
         
     }
     
-    func makeMutualFriendsString(_ ids : [String], _ lbl: UILabel) {
+    func makeMutualFriendsString(_ idsArr : [String], _ lbl: UILabel) {
+        let ids = idsArr.shuffled()
         if(ids.count == 1) {
             // default until loaded
             lbl.text = names[ids[0]] ?? "1 mutual friend" + " is going"
@@ -75,10 +76,26 @@ class DataManager {
     }
     
     func makeDateString(_ e : FBEvent) -> String {
-        
+                
         let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         
-        return e.start_time + " - " + e.end_time
+        let st = formatter.date(from: e.start_time)
+        let en = formatter.date(from: e.end_time)
+        
+        if(st == nil || en == nil) {
+            return e.start_time + " - " + e.end_time
+        }
+        
+        let outFormatter = DateFormatter()
+        outFormatter.dateFormat = "EEEE, MMM dd"
+    
+        if(e.start_time == e.end_time) {
+            return outFormatter.string(from: st!)
+        }
+        
+        return outFormatter.string(from: st!) + " - " + outFormatter.string(from: en!)
     }
     
     func doGet(_ token: AccessToken, _ loc: CLLocation, _ completion: (([FBEvent]?) -> Void)? = nil) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1702AC40232E280000CFC89A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1702AC3F232E280000CFC89A /* CategoryViewController.swift */; };
 		1723A0E8232CB724007AE0CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0E7232CB724007AE0CE /* AppDelegate.swift */; };
 		1723A0EA232CB724007AE0CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0E9232CB724007AE0CE /* SceneDelegate.swift */; };
 		1723A0EC232CB724007AE0CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0EB232CB724007AE0CE /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		13C54C70AD1F5B0F43846334 /* Pods_Wander.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wander.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1702AC3F232E280000CFC89A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		1723A0E4232CB724007AE0CE /* Wander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1723A0E7232CB724007AE0CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1723A0E9232CB724007AE0CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				174BCFB8232D67EB004D5F3A /* DetailViewController.swift */,
 				174BCFBA232D7023004D5F3A /* UICornerRadiusView.swift */,
 				17E2E6C7232D903A006B22FF /* DataManager.swift */,
+				1702AC3F232E280000CFC89A /* CategoryViewController.swift */,
 			);
 			path = Wander;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				1723A0EA232CB724007AE0CE /* SceneDelegate.swift in Sources */,
 				174BCFB9232D67EB004D5F3A /* DetailViewController.swift in Sources */,
 				1723A104232D222E007AE0CE /* EventView.swift in Sources */,
+				1702AC40232E280000CFC89A /* CategoryViewController.swift in Sources */,
 				17CD12DD232D597900DCCAD0 /* UISwitchTintable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

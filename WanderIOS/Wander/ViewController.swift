@@ -18,7 +18,8 @@ class ViewController: UIViewController, FUIAuthDelegate {
     
     @IBOutlet var subView: UIView!
     let sceneView = SceneLocationView()
-        
+    @IBOutlet var buttonsBlurView: UIVisualEffectView!
+    
     override func viewWillAppear(_ animated: Bool) {
         _ = Auth.auth().addStateDidChangeListener { (auth, user) in
             if(user == nil) {
@@ -112,11 +113,13 @@ class ViewController: UIViewController, FUIAuthDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buttonsBlurView.layer.cornerRadius = 16.0
+        buttonsBlurView.clipsToBounds = true
+        
         subView.addSubview(sceneView)
     
         sceneView.orientToTrueNorth = true
         sceneView.run()
-
         
         sceneView.showAxesNode = true
         
@@ -138,9 +141,17 @@ class ViewController: UIViewController, FUIAuthDelegate {
         }
     }
     
+    @IBAction func recommendedSwitchChange(sender: UISwitch) {
+        handleDatasetChanged(sender.isOn)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         sceneView.frame = subView.bounds
+    }
+    
+    func handleDatasetChanged(_ useRecommended : Bool) {
+        
     }
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
