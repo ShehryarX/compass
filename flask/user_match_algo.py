@@ -72,7 +72,7 @@ def cluster_friends(all_friends_df,categories,category_sums):
 # In[75]:
 
 
-def get_closest_friends(my_id, index_user_id_map, kmeans, data_input, target_nodes = 4):
+def get_closest_friends(my_id, index_user_id_map, kmeans, data_input, target_nodes = 6):
     # KnnNode class, storage class
     class KnnNode:
         def __init__(self,value,cluster_id,user_id):
@@ -157,17 +157,14 @@ def get_events(my_id, event_type,index_user_id_map, all_df, kmeans, data_input):
     percentageSort.sort(key=lambda x: x['value'], reverse=True) 
 
     events = []
-    
-    print(all_df)
 
     for userItem in percentageSort:
         userId = userItem['user_id']
-        print(userId) 
-        user_df = all_df.loc[all_df['user_id'] == userId]
-        user_df = user_df.loc[user_df['category'].str.contains(event_type)]
-        events += (list(user_df['name']))
+        user_df = all_df[all_df['user_id'] == int(userId)]
+        the_df = user_df[user_df['category'].str.contains(event_type)]
+        events += (list(the_df['name']))
         
-    return events
+    return events, [str(x['user_id']) for x in percentageSort]
 
 
 # In[77]:
@@ -197,8 +194,9 @@ def main_function(user_id, cat_type, all_friends_df, user_df):
     # Cluster friends
     kmeans,data_input,index_user_id_map = cluster_friends(all_friends_df,categories,category_sums)
     
+    result, friends = get_events(user_id, cat_type, index_user_id_map, all_friends_df, kmeans , data_input)
     # Get closest friends and get events
-    return get_events(user_id, cat_type, index_user_id_map, all_friends_df, kmeans , data_input)
+    return  result, friends 
 
 
 
